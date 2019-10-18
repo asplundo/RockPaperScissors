@@ -24,6 +24,9 @@ struct ContentView: View {
                         }) {
                             VStack {
                                 Image(move)
+                                    .padding()
+                                    .background(Color.black)
+                                    .clipShape(Circle())
                                 Text(move)
                             }
                         }.disabled(self.runs >= 10)
