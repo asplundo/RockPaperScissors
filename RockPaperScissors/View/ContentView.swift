@@ -11,14 +11,22 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             VStack {
+                Spacer()
                 PremiseView(choice: $appsChoice, shouldWin: $playerShouldWin)
+                Spacer()
+                Text("Your choice")
                 HStack {
                     ForEach(ContentView.moves, id: \.self) { move in
-                        Button(move, action: {
+                        Button(action: {
                             self.calculateScore(for: move)
                             self.runs += 1
                             self.reset()
-                        }).disabled(self.runs >= 10)
+                        }) {
+                            VStack {
+                                Image(move)
+                                Text(move)
+                            }
+                        }.disabled(self.runs >= 10)
                             .padding(.horizontal)
                     }
                 }

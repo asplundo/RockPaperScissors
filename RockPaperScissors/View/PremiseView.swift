@@ -5,16 +5,20 @@ struct PremiseView: View {
     @Binding var choice: Int
     @Binding var shouldWin: Bool
     
+    var choiceStr: String {
+        ContentView.moves[choice]
+    }
+    
     var body: some View {
         VStack(alignment: .center) {
-            HStack {
-                Text("Apps choice: ")
-                Text(ContentView.moves[choice])
-            }
-            HStack {
-                Text("Player shoud \(shouldWin ? "win" : "lose")")
-            }
-        }.font(.title)
+            Text("Apps choice").font(.title)
+            Image(choiceStr)
+                .resizable()
+                .frame(width: 100, height: 100, alignment: .center)
+            Text(choiceStr)
+                .font(.subheadline)
+            Text("Player shoud \(shouldWin ? "win" : "lose")")
+        }
     }
 }
 
